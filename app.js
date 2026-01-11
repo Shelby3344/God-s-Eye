@@ -185,7 +185,8 @@ async function loadOrganizations() {
 }
 
 async function loadRepos() {
-    const repos = await fetchGH(`/users/${CONFIG.GITHUB_USERNAME}/repos?per_page=100&sort=updated`);
+    // Usa /user/repos pra pegar públicos + privados (requer token autenticado)
+    const repos = await fetchGH(`/user/repos?per_page=100&sort=updated&affiliation=owner`);
     allRepos = repos || [];
     
     document.getElementById('repo-count').textContent = allRepos.length;
@@ -208,7 +209,7 @@ function renderRepos(repos) {
     }
     
     grid.innerHTML = repos.map(repo => `
-        <div class="repo-card" onclick="openProject('${repo.full_name}')">
+        <div class="repo-card repo-list-item" onclick="openProject('${repo.full_name}')">
             <div class="repo-header">
                 <span class="repo-name">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">

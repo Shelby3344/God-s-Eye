@@ -1,0 +1,20 @@
+<!-- Adicionar antes do </body> no CardFlowBR -->
+<script>
+(function(){
+  const SUPABASE_URL = 'https://zxvxsaosoaulreztafvg.supabase.co';
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp4dnhzYW9zb2F1bHJlenRhZnZnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQzMzg5MzIsImV4cCI6MjA3OTkxNDkzMn0.OxrlxzL_X659OwjxK5_VBPLW9wxn7HrOvuKOd7Wqmow';
+  fetch(SUPABASE_URL + '/rest/v1/page_views', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'apikey': SUPABASE_ANON_KEY,
+      'Authorization': 'Bearer ' + SUPABASE_ANON_KEY
+    },
+    body: JSON.stringify({
+      page_path: window.location.pathname,
+      referrer: document.referrer || null,
+      user_agent: navigator.userAgent
+    })
+  }).catch(()=>{});
+})();
+</script>

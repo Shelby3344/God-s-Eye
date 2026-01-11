@@ -1,0 +1,20 @@
+<!-- Adicionar antes do </body> no RevalidaFlow -->
+<script>
+(function(){
+  const SUPABASE_URL = 'https://faazmzqbsnppmbymqtco.supabase.co';
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZhYXptenFic25wcG1ieW1xdGNvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjcwMzEwMjgsImV4cCI6MjA4MjYwNzAyOH0.62x50lU8BTHkuJkSUuLRAmssqLZGK92y5W0Vtg6Y8K0';
+  fetch(SUPABASE_URL + '/rest/v1/page_views', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'apikey': SUPABASE_ANON_KEY,
+      'Authorization': 'Bearer ' + SUPABASE_ANON_KEY
+    },
+    body: JSON.stringify({
+      page_path: window.location.pathname,
+      referrer: document.referrer || null,
+      user_agent: navigator.userAgent
+    })
+  }).catch(()=>{});
+})();
+</script>

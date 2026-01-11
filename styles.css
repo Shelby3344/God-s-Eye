@@ -280,11 +280,16 @@ body {
 
 .featured-card:hover .featured-arrow { transform: translate(3px, -3px); }
 
-/* Repos Grid */
+/* Repos Grid - Lista */
 .repos-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.repo-list-item {
+    display: flex;
+    flex-direction: column;
 }
 
 .repo-card {
